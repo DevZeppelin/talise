@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Paleta tomada de la etiqueta Talise */
+  --color-deep: #16405c;
+  --color-navy: #235a78;
+  --color-lake: #1e4864;
+  --color-sky: #d9e5ec;
+  --color-mist: #f0f5f8;
+  --color-salmon: #e2a18f;
+  --color-clay: #c96f52;
+  --color-sand: #f7f1e9;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-display: var(--font-jost), var(--font-geist-sans), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-mist);
+  color: var(--color-deep);
+  font-family: var(--font-sans);
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
 }
