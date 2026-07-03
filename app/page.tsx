@@ -120,7 +120,7 @@ function Hero() {
         href="#productos"
         className="absolute right-8 top-24 z-10 flex flex-col items-center gap-1.5 sm:hidden"
       >
-        <span className="block h-44 w-44 overflow-hidden rounded-full shadow-lg ring-2 ring-white/50">
+        <span className="block h-28 w-28 overflow-hidden rounded-full shadow-lg ring-2 ring-white/50">
           <Image
             src={botellas}
             alt="Botellas de agua mineral Talise de 600 ml y 1,5 L"
@@ -128,9 +128,6 @@ function Hero() {
             placeholder="blur"
             className="h-full w-full object-cover object-[40%_70%]"
           />
-        </span>
-        <span className="rounded-full bg-deep/40 px-2.5 py-0.5 text-[0.6rem] text-white/90 backdrop-blur">
-          Agua de manantial en tus manos
         </span>
       </a>
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 pb-20 pt-40 text-white">
@@ -171,9 +168,6 @@ function Hero() {
             href="#productos"
             className="group relative hidden rotate-2 transition-transform hover:rotate-0 sm:block"
           >
-            <span className="absolute -top-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-clay px-4 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-white shadow-md">
-              Agua de manantial en tus manos
-            </span>
             <span className="block w-52 lg:w-60 overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white/40">
               <Image
                 src={botellas}
