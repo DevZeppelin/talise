@@ -3,17 +3,24 @@ import Image from "next/image";
 import heroPlanta from "@/public/images/hero-planta.png";
 import manantial from "@/public/images/arroyo.png";
 import botellas from "@/public/images/botellas.jpeg";
-import botella6l from "@/public/images/botella-6l.png";
-import bidon6l from "@/public/images/bidon-6l.png";
-import bidon20l from "@/public/images/bidon-20l.png";
-import bidonCasa from "@/public/images/bidon-casa.png";
+import botella600 from "@/public/images/productos/botella600.png";
+import botella1500 from "@/public/images/productos/botell1500.png";
+import bidon6 from "@/public/images/productos/bidon6.png";
+import bidon20 from "@/public/images/productos/bidon20.png";
+import dispensers from "@/public/images/productos/dispensers.png";
 import plantaExterior from "@/public/images/planta-exterior.png";
-import plantaInterior from "@/public/images/planta-interior.jpeg";
+import plantaInterior from "@/public/images/fabrica.png";
 import plantaNieve from "@/public/images/planta-nieve.jpeg";
 import bidonesStock from "@/public/images/bidones-stock.png";
 
 const WHATSAPP_URL =
   "https://wa.me/5492804538788?text=Hola%20Talise!%20Quiero%20hacer%20una%20consulta.";
+
+const WHATSAPP_DISTRIBUIDORES_URL =
+  "https://wa.me/5492804538788?text=Hola%20Talise!%20Quiero%20distribuir%20agua%20Talise.";
+
+const INSTAGRAM_URL = "https://www.instagram.com/talise.aguamineral/";
+const FACEBOOK_URL = "https://www.facebook.com/DistribucionTalise";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -25,6 +32,63 @@ function WhatsAppIcon({ className }: { className?: string }) {
     >
       <path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.9-4.44 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.84-.2-.49-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z" />
     </svg>
+  );
+}
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+      <circle cx="12" cy="12" r="4.2" />
+      <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden
+    >
+      <path d="M13.5 21.9v-8h2.7l.4-3.1h-3.1V8.8c0-.9.25-1.5 1.54-1.5h1.66V4.5c-.29-.04-1.27-.12-2.42-.12-2.4 0-4.04 1.46-4.04 4.15v2.32H7.5v3.1h2.74v8a10 10 0 0 0 3.26-.05Z" />
+    </svg>
+  );
+}
+
+function SocialLinks({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex items-center gap-3 ${className}`}>
+      <a
+        href={INSTAGRAM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Talise en Instagram"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/15 transition-colors"
+      >
+        <InstagramIcon className="h-5 w-5" />
+      </a>
+      <a
+        href={FACEBOOK_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Talise en Facebook"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white hover:bg-white/15 transition-colors"
+      >
+        <FacebookIcon className="h-5 w-5" />
+      </a>
+    </div>
   );
 }
 
@@ -60,6 +124,7 @@ function Header() {
     { href: "#agua", label: "El Agua" },
     { href: "#productos", label: "Productos" },
     { href: "#planta", label: "La Planta" },
+    { href: "#distribuidores", label: "Distribuidores" },
     { href: "#contacto", label: "Contacto" },
   ];
   return (
@@ -262,7 +327,7 @@ const PRODUCTOS = [
     tipo: "Descartable",
     descripcion:
       "Toda la pureza de Talise en un envase cómodo y portátil, para acompañarte e hidratarte durante el día.",
-    imagen: botella6l,
+    imagen: botella600,
     posicion: "object-center",
   },
   {
@@ -270,31 +335,23 @@ const PRODUCTOS = [
     tipo: "Descartable",
     descripcion:
       "La medida justa para tu mesa diaria, con la seguridad de tomar día a día agua pura de manantial.",
-    imagen: botellas,
-    posicion: "object-[center_70%]",
+    imagen: botella1500,
+    posicion: "object-center",
   },
   {
     nombre: "Bidón 6 L",
     tipo: "Descartable",
     descripcion:
       "Pensado para que toda la familia disfrute el agua más pura y natural de la Patagonia. Cien por cien reciclable.",
-    imagen: bidon6l,
+    imagen: bidon6,
     posicion: "object-center",
-  },
-  {
-    nombre: "Bidón retornable 12 L",
-    tipo: "Retornable",
-    descripcion:
-      "Práctico y liviano, ideal para el dispenser de tu casa u oficina. Se retira y se repone con cada reparto.",
-    imagen: bidonCasa,
-    posicion: "object-[center_30%]",
   },
   {
     nombre: "Bidón retornable 20 L",
     tipo: "Retornable",
     descripcion:
       "El clásico para hogares, comercios y oficinas: máximo rendimiento con envase retornable.",
-    imagen: bidon20l,
+    imagen: bidon20,
     posicion: "object-center",
   },
 ];
@@ -315,19 +372,19 @@ function Productos() {
             independientes de llenado, desde los 600 ml hasta los 20 litros.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PRODUCTOS.map((p) => (
             <article
               key={p.nombre}
               className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-sky/70"
             >
-              <div className="relative aspect-2/3 overflow-hidden">
+              <div className="relative aspect-square overflow-hidden">
                 <Image
                   src={p.imagen}
                   alt={p.nombre}
                   fill
                   placeholder="blur"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className={`object-cover transition-transform duration-500 group-hover:scale-105 ${p.posicion}`}
                 />
               </div>
@@ -346,22 +403,39 @@ function Productos() {
               </div>
             </article>
           ))}
-          <div className="flex flex-col justify-center rounded-3xl bg-navy p-8 text-white">
-            <h3 className="font-display text-2xl font-light">
-              ¿Querés recibir Talise?
+        </div>
+        <div className="mt-12 grid overflow-hidden rounded-3xl bg-navy text-white lg:grid-cols-2">
+          <div className="flex items-center justify-center">
+            <Image
+              src={dispensers}
+              alt="Dispenser común y dispenser frío/calor con bidón Talise de 20 L"
+              placeholder="blur"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="h-auto w-full"
+            />
+          </div>
+          <div className="flex flex-col justify-center p-8 sm:p-12">
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-salmon">
+              Dispensers
+            </p>
+            <h3 className="mt-3 font-display text-3xl sm:text-4xl font-light">
+              Dispensers en comodato
             </h3>
-            <p className="mt-3 text-sm text-white/80">
-              Consultá zonas de reparto y disponibilidad de envases por
-              WhatsApp.
+            <p className="mt-5 text-white/80 leading-relaxed">
+              Con tu reparto de bidones podés acceder a un{" "}
+              <strong className="text-white">dispenser común</strong> o a un{" "}
+              <strong className="text-white">dispenser frío/calor</strong>,
+              entregados a comodato: sin costo de compra, para tu casa, comercio
+              u oficina.
             </p>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-deep hover:bg-sky transition-colors"
+              className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-deep hover:bg-sky transition-colors"
             >
               <WhatsAppIcon className="h-4 w-4" />
-              Escribinos
+              Consultá por tu dispenser
             </a>
           </div>
         </div>
@@ -520,6 +594,36 @@ function Certificaciones() {
   );
 }
 
+function Distribuidores() {
+  return (
+    <section id="distribuidores" className="bg-sand">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-xs font-semibold tracking-[0.3em] uppercase text-clay">
+            Distribuidores
+          </p>
+          <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-deep">
+            ¿Querés distribuir agua Talise?
+          </h2>
+          <p className="mt-5 text-lg text-deep/80">
+            Sumate a nuestra red de distribución y llevá el agua mineral natural
+            de la Patagonia a tu zona. Escribinos y te contamos cómo empezar.
+          </p>
+          <a
+            href={WHATSAPP_DISTRIBUIDORES_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-7 py-3.5 text-sm font-semibold text-white hover:bg-deep transition-colors"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+            Escribinos acá
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const ZONAS = [
   "Puerto Madryn",
   "Trelew",
@@ -570,6 +674,7 @@ function Contacto() {
                 Establecimiento La Victoria, Telsen, Chubut — Patagonia
                 Argentina
               </p>
+              <SocialLinks className="pt-2" />
             </div>
           </div>
           <div>
@@ -601,6 +706,26 @@ function Contacto() {
             © {new Date().getFullYear()} Agua Mineral Natural Talise — Patagonia
             Argentina
           </p>
+          <div className="flex items-center gap-4">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talise en Instagram"
+              className="hover:text-salmon transition-colors"
+            >
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talise en Facebook"
+              className="hover:text-salmon transition-colors"
+            >
+              <FacebookIcon className="h-4 w-4" />
+            </a>
+          </div>
           <a
             href="https://devzeppelin.com.ar"
             target="_blank"
@@ -638,6 +763,7 @@ export default function Home() {
       <LandscapeBand />
       <Productos />
       <LaPlanta />
+      <Distribuidores />
       <LandscapeBand />
       <Contacto />
       <WhatsAppFab />
