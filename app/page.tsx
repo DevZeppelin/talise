@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+import Reveal from "./reveal";
+import { SITE_NAME, SITE_URL } from "./site";
+
 import heroPlanta from "@/public/images/hero-planta.png";
 import manantial from "@/public/images/arroyo.png";
 import botellas from "@/public/images/botellas.jpeg";
@@ -197,7 +200,7 @@ function Hero() {
       </a>
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 pb-20 pt-40 text-white">
         <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-12">
-          <div className="max-w-xl">
+          <div className="max-w-xl animate-rise">
             <p className="mb-3 font-display italic text-lg sm:text-xl text-sky [text-shadow:0_1px_8px_rgba(13,36,54,0.7)]">
               agua mineral natural de manantial
             </p>
@@ -229,23 +232,25 @@ function Hero() {
               </a>
             </div>
           </div>
-          <a
-            href="#productos"
-            className="group relative hidden rotate-2 transition-transform hover:rotate-0 sm:block"
-          >
-            <span className="block w-52 lg:w-60 overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white/40">
-              <Image
-                src={botellas}
-                alt="Botellas de agua mineral Talise de 600 ml y 1,5 L"
-                sizes="(min-width: 1024px) 240px, 208px"
-                placeholder="blur"
-                className="aspect-3/4 w-full object-cover object-[40%_65%] transition-transform duration-500 group-hover:scale-105"
-              />
-            </span>
-            <span className="mt-3 block text-center text-xs text-white/85">
-              Agua envasada de manantial · de 600 ml a 20 L
-            </span>
-          </a>
+          <div className="hidden sm:block animate-rise [animation-delay:200ms]">
+            <a
+              href="#productos"
+              className="group relative block rotate-2 transition-transform hover:rotate-0"
+            >
+              <span className="block w-52 lg:w-60 overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white/40">
+                <Image
+                  src={botellas}
+                  alt="Botellas de agua mineral Talise de 600 ml y 1,5 L"
+                  sizes="(min-width: 1024px) 240px, 208px"
+                  placeholder="blur"
+                  className="aspect-3/4 w-full object-cover object-[40%_65%] transition-transform duration-500 group-hover:scale-105"
+                />
+              </span>
+              <span className="mt-3 block text-center text-xs text-white/85">
+                Agua envasada de manantial · de 600 ml a 20 L
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -264,7 +269,7 @@ function ElAgua() {
     <section id="agua" className="bg-mist">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <p className="text-xs font-semibold tracking-[0.3em] uppercase text-clay">
               El Agua
             </p>
@@ -285,30 +290,33 @@ function ElAgua() {
               físico-química puede ser catalogada como{" "}
               <strong>una de las mejores aguas del mundo</strong>.
             </p>
-          </div>
-          <div className="relative aspect-4/5 max-h-130 w-full overflow-hidden rounded-3xl">
-            <Image
-              src={manantial}
-              alt="Vertiente de agua de manantial en el Establecimiento La Victoria"
-              fill
-              placeholder="blur"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="relative aspect-4/5 max-h-130 w-full overflow-hidden rounded-3xl">
+              <Image
+                src={manantial}
+                alt="Vertiente de agua de manantial en el Establecimiento La Victoria"
+                fill
+                placeholder="blur"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
         </div>
         <div className="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {ANALISIS.map((a) => (
-            <div
-              key={a.unidad}
-              className="rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-sky"
-            >
-              <p className="font-display text-4xl font-light text-navy">
-                {a.valor}
-              </p>
-              <p className="mt-1 text-sm font-semibold text-clay">{a.unidad}</p>
-              <p className="mt-2 text-xs text-deep/70">{a.detalle}</p>
-            </div>
+          {ANALISIS.map((a, i) => (
+            <Reveal key={a.unidad} delay={i * 75} className="h-full">
+              <div className="h-full rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-sky">
+                <p className="font-display text-4xl font-light text-navy">
+                  {a.valor}
+                </p>
+                <p className="mt-1 text-sm font-semibold text-clay">
+                  {a.unidad}
+                </p>
+                <p className="mt-2 text-xs text-deep/70">{a.detalle}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
         <p className="mt-4 text-center text-xs text-deep/50">
@@ -360,7 +368,7 @@ function Productos() {
   return (
     <section id="productos" className="bg-sand">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-clay">
             Nuestros Productos
           </p>
@@ -371,13 +379,11 @@ function Productos() {
             Envasamos y distribuimos agua mineral natural en cuatro líneas
             independientes de llenado, desde los 600 ml hasta los 20 litros.
           </p>
-        </div>
+        </Reveal>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PRODUCTOS.map((p) => (
-            <article
-              key={p.nombre}
-              className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-sky/70"
-            >
+          {PRODUCTOS.map((p, i) => (
+            <Reveal key={p.nombre} delay={i * 100} className="h-full">
+              <article className="group h-full overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-sky/70">
               <div className="relative aspect-square overflow-hidden">
                 <Image
                   src={p.imagen}
@@ -401,10 +407,12 @@ function Productos() {
                   {p.descripcion}
                 </p>
               </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
-        <div className="mt-12 grid overflow-hidden rounded-3xl bg-navy text-white lg:grid-cols-2">
+        <Reveal className="mt-12">
+          <div className="grid overflow-hidden rounded-3xl bg-navy text-white lg:grid-cols-2">
           <div className="flex items-center justify-center">
             <Image
               src={dispensers}
@@ -438,7 +446,8 @@ function Productos() {
               Consultá por tu dispenser
             </a>
           </div>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -456,17 +465,19 @@ function LaPlanta() {
     <section id="planta" className="bg-mist">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div className="relative order-last lg:order-first aspect-16/10 w-full overflow-hidden rounded-3xl">
-            <Image
-              src={plantaExterior}
-              alt="Vista de la planta de envasado Talise en la meseta de Chubut"
-              fill
-              placeholder="blur"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div>
+          <Reveal className="order-last lg:order-first" delay={150}>
+            <div className="relative aspect-16/10 w-full overflow-hidden rounded-3xl">
+              <Image
+                src={plantaExterior}
+                alt="Vista de la planta de envasado Talise en la meseta de Chubut"
+                fill
+                placeholder="blur"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+          <Reveal>
             <p className="text-xs font-semibold tracking-[0.3em] uppercase text-clay">
               La Planta
             </p>
@@ -484,19 +495,18 @@ function LaPlanta() {
               depósito, laboratorio, comedor y vestuarios, garantizando calidad
               y trazabilidad en cada etapa del proceso.
             </p>
-          </div>
+          </Reveal>
         </div>
         <div className="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {PLANTA_STATS.map((s) => (
-            <div
-              key={s.detalle}
-              className="rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-sky"
-            >
-              <p className="font-display text-4xl font-light text-navy">
-                {s.valor}
-              </p>
-              <p className="mt-2 text-xs text-deep/70">{s.detalle}</p>
-            </div>
+          {PLANTA_STATS.map((s, i) => (
+            <Reveal key={s.detalle} delay={i * 75} className="h-full">
+              <div className="h-full rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-sky">
+                <p className="font-display text-4xl font-light text-navy">
+                  {s.valor}
+                </p>
+                <p className="mt-2 text-xs text-deep/70">{s.detalle}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
@@ -513,23 +523,24 @@ function LaPlanta() {
               img: plantaNieve,
               alt: "La planta Talise nevada en invierno",
             },
-          ].map((f) => (
-            <div
-              key={f.alt}
-              className="relative aspect-4/3 overflow-hidden rounded-2xl"
-            >
-              <Image
-                src={f.img}
-                alt={f.alt}
-                fill
-                placeholder="blur"
-                sizes="(min-width: 640px) 33vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+          ].map((f, i) => (
+            <Reveal key={f.alt} delay={i * 100}>
+              <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
+                <Image
+                  src={f.img}
+                  alt={f.alt}
+                  fill
+                  placeholder="blur"
+                  sizes="(min-width: 640px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
           ))}
         </div>
-        <Certificaciones />
+        <Reveal>
+          <Certificaciones />
+        </Reveal>
       </div>
     </section>
   );
@@ -598,7 +609,7 @@ function Distribuidores() {
   return (
     <section id="distribuidores" className="bg-sand">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-clay">
             Distribuidores
           </p>
@@ -618,7 +629,7 @@ function Distribuidores() {
             <WhatsAppIcon className="h-5 w-5" />
             Escribinos acá
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -639,7 +650,7 @@ function Contacto() {
     <section id="contacto" className="bg-deep text-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-24">
         <div className="grid gap-12 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <p className="text-xs font-semibold tracking-[0.3em] uppercase text-salmon">
               Contacto
             </p>
@@ -676,8 +687,8 @@ function Contacto() {
               </p>
               <SocialLinks className="pt-2" />
             </div>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={150}>
             <h3 className="font-display text-2xl font-light text-sky">
               Zonas de reparto
             </h3>
@@ -697,7 +708,7 @@ function Contacto() {
               <br />
               RNE N.º 07007463 · RNPA N.º 0700641
             </p>
-          </div>
+          </Reveal>
         </div>
       </div>
       <div className="border-t border-white/10 py-6">
@@ -740,6 +751,68 @@ function Contacto() {
   );
 }
 
+/* Datos estructurados para buscadores y asistentes de IA */
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organizacion`,
+      name: SITE_NAME,
+      legalName: "Argain Hnos S.R.L.",
+      url: SITE_URL,
+      logo: `${SITE_URL}/images/logo.png`,
+      description:
+        "Agua mineral natural de manantial envasada en su fuente de origen, en el Establecimiento La Victoria, Telsen, Chubut, Patagonia Argentina. De mineralización débil, bajo sodio y pH alcalino.",
+      email: "info@talise.com.ar",
+      telephone: "+5492804538788",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Telsen",
+        addressRegion: "Chubut",
+        addressCountry: "AR",
+      },
+      areaServed: ZONAS.map((z) => ({ "@type": "City", name: z })),
+      sameAs: [INSTAGRAM_URL, FACEBOOK_URL],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        telephone: "+5492804538788",
+        availableLanguage: "es",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#sitio`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      inLanguage: "es-AR",
+      publisher: { "@id": `${SITE_URL}/#organizacion` },
+    },
+    {
+      "@type": "ItemList",
+      name: "Productos Talise",
+      itemListElement: PRODUCTOS.map((p, i) => ({
+        "@type": "Product",
+        position: i + 1,
+        name: `Agua Mineral Natural Talise — ${p.nombre}`,
+        description: p.descripcion,
+        image: `${SITE_URL}${p.imagen.src}`,
+        brand: { "@type": "Brand", name: "Talise" },
+        manufacturer: { "@id": `${SITE_URL}/#organizacion` },
+      })),
+    },
+    {
+      "@type": "Service",
+      name: "Dispensers en comodato",
+      description:
+        "Con el reparto de bidones Talise se entrega un dispenser común o un dispenser frío/calor a comodato, sin costo de compra, para casas, comercios y oficinas.",
+      provider: { "@id": `${SITE_URL}/#organizacion` },
+      areaServed: ZONAS.map((z) => ({ "@type": "City", name: z })),
+    },
+  ],
+};
+
 function WhatsAppFab() {
   return (
     <a
@@ -757,6 +830,10 @@ function WhatsAppFab() {
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
       <Header />
       <Hero />
       <ElAgua />
