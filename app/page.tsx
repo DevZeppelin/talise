@@ -152,16 +152,38 @@ function Header() {
             </a>
           ))}
         </nav>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2 text-sm font-medium text-white hover:bg-deep transition-colors"
-        >
-          <WhatsAppIcon className="h-4 w-4" />
-          <span className="hidden sm:inline">Pedí tu agua</span>
-          <span className="sm:hidden">WhatsApp</span>
-        </a>
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talise en Instagram"
+              className="text-deep/50 hover:text-clay transition-colors"
+            >
+              <InstagramIcon className="h-4.5 w-4.5" />
+            </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talise en Facebook"
+              className="text-deep/50 hover:text-clay transition-colors"
+            >
+              <FacebookIcon className="h-4.5 w-4.5" />
+            </a>
+          </div>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2 text-sm font-medium text-white hover:bg-deep transition-colors"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            <span className="hidden sm:inline">Pedí tu agua</span>
+            <span className="sm:hidden">WhatsApp</span>
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -183,21 +205,7 @@ function Hero() {
         />
         <div className="absolute inset-0 bg-linear-to-t from-deep/85 via-deep/25 to-navy/30" />
       </div>
-      {/* Badge circular de producto, solo en mobile */}
-      <a
-        href="#productos"
-        className="absolute right-8 top-24 z-10 flex flex-col items-center gap-1.5 sm:hidden"
-      >
-        <span className="block h-28 w-28 overflow-hidden rounded-full shadow-lg ring-2 ring-white/50">
-          <Image
-            src={botellas}
-            alt="Botellas de agua mineral Talise de 600 ml y 1,5 L"
-            sizes="176px"
-            placeholder="blur"
-            className="h-full w-full object-cover object-[40%_70%]"
-          />
-        </span>
-      </a>
+
       <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 pb-20 pt-40 text-white">
         <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-12">
           <div className="max-w-xl animate-rise">
@@ -228,28 +236,29 @@ function Hero() {
                 className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
               >
                 <WhatsAppIcon className="h-4 w-4" />
-                +54 9 280 453-8788
+                280 453-8788
               </a>
             </div>
-          </div>
-          <div className="hidden sm:block animate-rise [animation-delay:200ms]">
-            <a
-              href="#productos"
-              className="group relative block rotate-2 transition-transform hover:rotate-0"
-            >
-              <span className="block w-52 lg:w-60 overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white/40">
-                <Image
-                  src={botellas}
-                  alt="Botellas de agua mineral Talise de 600 ml y 1,5 L"
-                  sizes="(min-width: 1024px) 240px, 208px"
-                  placeholder="blur"
-                  className="aspect-3/4 w-full object-cover object-[40%_65%] transition-transform duration-500 group-hover:scale-105"
-                />
-              </span>
-              <span className="mt-3 block text-center text-xs text-white/85">
-                Agua envasada de manantial · de 600 ml a 20 L
-              </span>
-            </a>
+            <div className="mt-7 flex items-center gap-3 md:hidden">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Talise en Instagram"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:bg-white/10 transition-colors"
+              >
+                <InstagramIcon className="h-4 w-4" />
+              </a>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Talise en Facebook"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white/80 hover:bg-white/10 transition-colors"
+              >
+                <FacebookIcon className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -274,7 +283,7 @@ function ElAgua() {
               El Agua
             </p>
             <h2 className="mt-3 font-display text-4xl sm:text-5xl font-light text-deep">
-              Nace pura en la estepa
+              La fuerza pura de la meseta patagónica
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-deep/80">
               El agua mineral Talise es de origen natural y atermal: no se
@@ -355,7 +364,7 @@ const PRODUCTOS = [
     posicion: "object-center",
   },
   {
-    nombre: "Bidón retornable 20 L",
+    nombre: "Bidón retornable de 12 y 20 litros",
     tipo: "Retornable",
     descripcion:
       "El clásico para hogares, comercios y oficinas: máximo rendimiento con envase retornable.",
@@ -384,68 +393,67 @@ function Productos() {
           {PRODUCTOS.map((p, i) => (
             <Reveal key={p.nombre} delay={i * 100} className="h-full">
               <article className="group h-full overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-sky/70">
-              <div className="relative aspect-square overflow-hidden">
-                <Image
-                  src={p.imagen}
-                  alt={p.nombre}
-                  fill
-                  placeholder="blur"
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className={`object-cover transition-transform duration-500 group-hover:scale-105 ${p.posicion}`}
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-display text-2xl font-light text-navy">
-                    {p.nombre}
-                  </h3>
-                  <span className="shrink-0 rounded-full bg-sky px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-deep">
-                    {p.tipo}
-                  </span>
+                <div className="relative aspect-square overflow-hidden">
+                  <Image
+                    src={p.imagen}
+                    alt={p.nombre}
+                    fill
+                    placeholder="blur"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className={`object-cover transition-transform duration-500 group-hover:scale-105 ${p.posicion}`}
+                  />
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-deep/75">
-                  {p.descripcion}
-                </p>
-              </div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-display text-2xl font-light text-navy">
+                      {p.nombre}
+                    </h3>
+                    <span className="shrink-0 rounded-full bg-sky px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wide text-deep">
+                      {p.tipo}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-deep/75">
+                    {p.descripcion}
+                  </p>
+                </div>
               </article>
             </Reveal>
           ))}
         </div>
         <Reveal className="mt-12">
           <div className="grid overflow-hidden rounded-3xl bg-navy text-white lg:grid-cols-2">
-          <div className="flex items-center justify-center">
-            <Image
-              src={dispensers}
-              alt="Dispenser común y dispenser frío/calor con bidón Talise de 20 L"
-              placeholder="blur"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="h-auto w-full"
-            />
-          </div>
-          <div className="flex flex-col justify-center p-8 sm:p-12">
-            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-salmon">
-              Dispensers
-            </p>
-            <h3 className="mt-3 font-display text-3xl sm:text-4xl font-light">
-              Dispensers en comodato
-            </h3>
-            <p className="mt-5 text-white/80 leading-relaxed">
-              Con tu reparto de bidones podés acceder a un{" "}
-              <strong className="text-white">dispenser común</strong> o a un{" "}
-              <strong className="text-white">dispenser frío/calor</strong>,
-              entregados a comodato: sin costo de compra, para tu casa, comercio
-              u oficina.
-            </p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-deep hover:bg-sky transition-colors"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-              Consultá por tu dispenser
-            </a>
-          </div>
+            <div className="flex items-center justify-center">
+              <Image
+                src={dispensers}
+                alt="Dispenser común y dispenser frío/calor con bidón Talise de 20 L"
+                placeholder="blur"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="h-auto w-full"
+              />
+            </div>
+            <div className="flex flex-col justify-center p-8 sm:p-12">
+              <p className="text-xs font-semibold tracking-[0.3em] uppercase text-salmon">
+                Dispensers
+              </p>
+              <h3 className="mt-3 font-display text-3xl sm:text-4xl font-light">
+                Dispensers común y frío/calor
+              </h3>
+              <p className="mt-5 text-white/80 leading-relaxed">
+                Con tu reparto de bidones podés acceder a un{" "}
+                <strong className="text-white">dispenser común</strong> o a un{" "}
+                <strong className="text-white">dispenser frío/calor</strong>:
+                para tu casa, comercio u oficina.
+              </p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-deep hover:bg-sky transition-colors"
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+                Consultá por tu dispenser
+              </a>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -804,9 +812,9 @@ const JSON_LD = {
     },
     {
       "@type": "Service",
-      name: "Dispensers en comodato",
+      name: "Dispensers",
       description:
-        "Con el reparto de bidones Talise se entrega un dispenser común o un dispenser frío/calor a comodato, sin costo de compra, para casas, comercios y oficinas.",
+        "Con el reparto de bidones Talise se entrega un dispenser común o un dispenser frío/calor, para casas, comercios y oficinas.",
       provider: { "@id": `${SITE_URL}/#organizacion` },
       areaServed: ZONAS.map((z) => ({ "@type": "City", name: z })),
     },

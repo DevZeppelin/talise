@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Talise",
   },
   description:
-    "Agua Mineral Natural Talise, envasada en su fuente de origen en el Establecimiento La Victoria, Telsen, Chubut, Patagonia Argentina. Agua de manantial de mineralización débil, bajo sodio y pH alcalino. Botellas, bidones y dispensers en comodato con reparto en Puerto Madryn, Trelew, Rawson y toda la zona.",
+    "Agua Mineral Natural Talise, envasada en su fuente de origen en el Establecimiento La Victoria, Telsen, Chubut, Patagonia Argentina. Agua de manantial de mineralización débil, bajo sodio y pH alcalino. Botellas, bidones y dispensers con reparto en Puerto Madryn, Trelew, Rawson y toda la zona.",
   keywords: [
     "agua mineral",
     "agua mineral natural",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "Telsen",
     "bidones de agua",
     "dispenser de agua",
-    "dispenser frío calor comodato",
+    "dispenser frío calor",
     "reparto de agua Puerto Madryn",
     "reparto de agua Trelew",
     "distribuidores de agua mineral",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Talise — Agua Mineral Natural de Manantial",
     description:
-      "Agua de manantial envasada en su fuente de origen, en la meseta de Chubut. Botellas, bidones y dispensers en comodato. Patagonia Argentina.",
+      "Agua de manantial envasada en su fuente de origen, en la meseta de Chubut. Botellas, bidones y dispensers. Patagonia Argentina.",
     url: "/",
     locale: "es_AR",
     type: "website",
